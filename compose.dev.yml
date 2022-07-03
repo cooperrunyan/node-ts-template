@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      dockerfile: ./dockerfile
+      context: .
+      target: base
+    env_file: ./.env
+    volumes:
+      - ./src:/app/src
+    restart: always
+    command: yarn dev
+    environment:
+      PORT: 3000
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
